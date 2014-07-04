@@ -19,4 +19,16 @@ The overriding `Seam.Download` does a specific processing for files biger that 5
  - redirect to a custom Servlet
  - the servlet will download the Blob and cleanup the Session
 
+## Building 
+
+    mvn clean install
+
+## Using
+
+The bundle will replace the default `Seam.Download` operation, so all you have to do is :
+
+ - to copy the bundle in `nxserver/plugins` or `nxserver/bundles`
+ - restart the server
+
+After restart, the `Seam.Download` operation will use the new implementation.
 
