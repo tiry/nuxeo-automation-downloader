@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<component name="org.nuxeo.ecm.automation.jsf.download.contrib.test" version="1.0">
+ 
+  <require>org.nuxeo.ecm.automation.jsf.download.contrib</require>
+  
+  <extension target="org.nuxeo.ecm.platform.actions.ActionService" point="actions">
+
+    <action id="TestDownload" label="Test Download" enabled="true" order="0" type="link" immediate="false" link="#{operationActionBean.doOperation('TestSeamDownload')}">
+      <category>DOCUMENT_UPPER_ACTION</category>
+    </action>
+
+  </extension>
+  
+  <extension target="org.nuxeo.ecm.core.operation.OperationServiceComponent" point="chains">
+ 
+    <chain id="TestSeamDownload">
+      <operation id="Seam.GetCurrentDocument"/>
+      <operation id="Blob.Get">
+        <param type="string" name="xpath">file:content</param>
+      </operation>
+      <operation id="Seam.DownloadFile"/>
+    </chain>
+ 
+  </extension>
+  
+ </component>
